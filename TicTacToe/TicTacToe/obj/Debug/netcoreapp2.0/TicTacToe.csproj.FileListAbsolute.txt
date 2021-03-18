@@ -1,0 +1,23 @@
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\TicTacToe\TicTacToe\obj\Debug\netcoreapp2.0\TicTacToe.csprojResolveAssemblyReference.cache
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\TicTacToe\TicTacToe\obj\Debug\netcoreapp2.0\TicTacToe.csproj.CoreCompileInputs.cache
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\TicTacToe\TicTacToe\obj\Debug\netcoreapp2.0\TicTacToe.AssemblyInfoInputs.cache
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\TicTacToe\TicTacToe\obj\Debug\netcoreapp2.0\TicTacToe.AssemblyInfo.cs
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\TicTacToe\TicTacToe\bin\Debug\netcoreapp2.0\TicTacToe.deps.json
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\TicTacToe\TicTacToe\bin\Debug\netcoreapp2.0\TicTacToe.runtimeconfig.json
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\TicTacToe\TicTacToe\bin\Debug\netcoreapp2.0\TicTacToe.runtimeconfig.dev.json
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\TicTacToe\TicTacToe\bin\Debug\netcoreapp2.0\TicTacToe.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\TicTacToe\TicTacToe\bin\Debug\netcoreapp2.0\TicTacToe.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\TicTacToe\TicTacToe\obj\Debug\netcoreapp2.0\TicTacToe.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\TicTacToe\TicTacToe\obj\Debug\netcoreapp2.0\TicTacToe.pdb
+C:\Users\Aryan\Desktop\TicTacToe\TicTacToe\bin\Debug\netcoreapp2.0\TicTacToe.deps.json
+C:\Users\Aryan\Desktop\TicTacToe\TicTacToe\bin\Debug\netcoreapp2.0\TicTacToe.runtimeconfig.json
+C:\Users\Aryan\Desktop\TicTacToe\TicTacToe\bin\Debug\netcoreapp2.0\TicTacToe.runtimeconfig.dev.json
+C:\Users\Aryan\Desktop\TicTacToe\TicTacToe\bin\Debug\netcoreapp2.0\TicTacToe.dll
+C:\Users\Aryan\Desktop\TicTacToe\TicTacToe\bin\Debug\netcoreapp2.0\TicTacToe.pdb
+C:\Users\Aryan\Desktop\TicTacToe\TicTacToe\obj\Debug\netcoreapp2.0\TicTacToe.csprojAssemblyReference.cache
+C:\Users\Aryan\Desktop\TicTacToe\TicTacToe\obj\Debug\netcoreapp2.0\TicTacToe.AssemblyInfoInputs.cache
+C:\Users\Aryan\Desktop\TicTacToe\TicTacToe\obj\Debug\netcoreapp2.0\TicTacToe.AssemblyInfo.cs
+C:\Users\Aryan\Desktop\TicTacToe\TicTacToe\obj\Debug\netcoreapp2.0\TicTacToe.csproj.CoreCompileInputs.cache
+C:\Users\Aryan\Desktop\TicTacToe\TicTacToe\obj\Debug\netcoreapp2.0\TicTacToe.dll
+C:\Users\Aryan\Desktop\TicTacToe\TicTacToe\obj\Debug\netcoreapp2.0\TicTacToe.pdb
+C:\Users\Aryan\Desktop\TicTacToe\TicTacToe\obj\Debug\netcoreapp2.0\TicTacToe.genruntimeconfig.cache
