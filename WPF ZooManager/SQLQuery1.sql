@@ -1,0 +1,1 @@
+﻿Insert into Zoo (Location) values ('London');
