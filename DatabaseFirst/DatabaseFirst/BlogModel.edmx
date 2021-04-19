@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MytestDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'MytestDB.dbo.Posts' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Posts">
+          <Property Name="PostID" Type="int" />
+          <Property Name="DatePublished" Type="smalldatetime" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+          <Property Name="Body" Type="varchar" MaxLength="8000" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'MytestDB.dbo.tabCustomer' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tabCustomer">
+          <Property Name="ID" Type="int" />
+          <Property Name="Name" Type="char" MaxLength="20" />
+          <Property Name="Address" Type="char" MaxLength="100" />
+          <Property Name="PhoneNumber" Type="char" MaxLength="13" />
+          <Property Name="Email" Type="char" MaxLength="20" />
+        </EntityType>-->
+        <EntityType Name="Zoo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZooAnimal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnimalId" Type="int" Nullable="false" />
+          <Property Name="ZooID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="AnimalFK">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ZooAnimal" Type="Self.ZooAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ZooAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ZooFK">
+          <End Role="Zoo" Type="Self.Zoo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ZooAnimal" Type="Self.ZooAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zoo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ZooAnimal">
+              <PropertyRef Name="ZooID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MytestDBModelStoreContainer">
+          <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zoo" EntityType="Self.Zoo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZooAnimal" EntityType="Self.ZooAnimal" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="AnimalFK" Association="Self.AnimalFK">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="ZooAnimal" EntitySet="ZooAnimal" />
+          </AssociationSet>
+          <AssociationSet Name="ZooFK" Association="Self.ZooFK">
+            <End Role="Zoo" EntitySet="Zoo" />
+            <End Role="ZooAnimal" EntitySet="ZooAnimal" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MytestDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ZooAnimals" Relationship="Self.AnimalFK" FromRole="Animal" ToRole="ZooAnimal" />
+        </EntityType>
+        <EntityType Name="Zoo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ZooAnimals" Relationship="Self.ZooFK" FromRole="Zoo" ToRole="ZooAnimal" />
+        </EntityType>
+        <EntityType Name="ZooAnimal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnimalId" Type="Int32" Nullable="false" />
+          <Property Name="ZooID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Animal" Relationship="Self.AnimalFK" FromRole="ZooAnimal" ToRole="Animal" />
+          <NavigationProperty Name="Zoo" Relationship="Self.ZooFK" FromRole="ZooAnimal" ToRole="Zoo" />
+        </EntityType>
+        <Association Name="AnimalFK">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ZooAnimal" Type="Self.ZooAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ZooAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ZooFK">
+          <End Role="Zoo" Type="Self.Zoo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ZooAnimal" Type="Self.ZooAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zoo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ZooAnimal">
+              <PropertyRef Name="ZooID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MytestDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Animals" EntityType="Self.Animal" />
+          <EntitySet Name="Zoos" EntityType="Self.Zoo" />
+          <EntitySet Name="ZooAnimals" EntityType="Self.ZooAnimal" />
+          <AssociationSet Name="AnimalFK" Association="Self.AnimalFK">
+            <End Role="Animal" EntitySet="Animals" />
+            <End Role="ZooAnimal" EntitySet="ZooAnimals" />
+          </AssociationSet>
+          <AssociationSet Name="ZooFK" Association="Self.ZooFK">
+            <End Role="Zoo" EntitySet="Zoos" />
+            <End Role="ZooAnimal" EntitySet="ZooAnimals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MytestDBModelStoreContainer" CdmEntityContainer="MytestDBEntities">
+          <EntitySetMapping Name="Animals">
+            <EntityTypeMapping TypeName="MytestDBModel.Animal">
+              <MappingFragment StoreEntitySet="Animal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zoos">
+            <EntityTypeMapping TypeName="MytestDBModel.Zoo">
+              <MappingFragment StoreEntitySet="Zoo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZooAnimals">
+            <EntityTypeMapping TypeName="MytestDBModel.ZooAnimal">
+              <MappingFragment StoreEntitySet="ZooAnimal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AnimalId" ColumnName="AnimalId" />
+                <ScalarProperty Name="ZooID" ColumnName="ZooID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
